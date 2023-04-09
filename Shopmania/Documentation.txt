@@ -1,0 +1,220 @@
+1 Introduction
+You are a single parent with four hungry children and the weekly grocery shop is becoming
+difficult. Luckily, you know a bit of Python and can write a program that generates a shopping
+list based on what recipes are going to be prepared that week.
+
+
+3 Terminology
+In the context of this assignment:
+recipe name: str represents the name of a recipe. Note: Recipe names should only contain
+lowercase letters from the English alphabet without any numbers or special characters.
+recipe: tuple[str, str] is a tuple containing two str’s. The first str in the tuple represents the name of the recipe. The second str contains all the ingredients in the form
+of 'amount measure ingredient_name', e.g. '115 g Nuttelex' which represents 115
+grams of Nuttelex. When multiple ingredients are present, they are separated by a single comma. Note that there is no space. e.g. '115 g Nuttelex,50 g sugar' have a look
+at constants.py for examples.
+recipes: list[tuple[str, str]] is a list of recipes. Each recipe follows the format described
+above. Duplicates can exist.
+ingredient detail: tuple[float, str, str] , is a tuple containing information of a single
+ingredient. (amount, measure, ingredient name), e.g. (115.0, 'g', 'Nuttelex').
+cookbook is a collection of all available recipes and you may use whatever type you feel is appropriate for it. Duplicates do not exist in the cookbook.
+
+
+4 Interaction
+This section provides an overview of the interaction. Where prompts and outputs are not explicitly
+mentioned in this section, please see Section 5.
+4.1 Interaction loop
+At the beginning of the interaction, the user is prompted with the message
+Please enter a command:
+(note the trailing space) to choose a command. Once a command is entered the user should be
+prompted again. The valid commands are outlined in Table 1.
+Throughout the interaction, the user may add to or remove from the cookbook. They can also
+add to or remove from the list of recipes as well. You may assume that your program will
+not be tested for invalid inputs that do not match the expected commands in Table 1. The
+prompt should repeat until the user quit by entering the "Q" or "q" action.
+Input Description
+"H" or "h" Display a help message.
+"Q" or "q" Quit.
+"add {recipe}" adds a recipe to the list of recipes.
+"rm {recipe}" removes a recipe from the collection.
+"rm
+{ingredient name}
+{amount}"
+removes an ingredient from the shopping list.
+"g" or "G" generates a shopping list based on the list of
+recipes.
+"ls" list all recipes in shopping cart.
+"ls -a" list all available recipes.
+"ls -s" display shopping list.
+"mkrec" creates a recipe.
+Table 1: Potential command that user can choose. {recipe} denotes that the name of recipe
+should be provided. Values not surrounded by braces should be taken as string literals.
+
+
+
+6 Example Interaction
+The following section provides extended instances of user interaction to demonstrate completed
+program behaviour.
+
+Example 1
+Please enter a command: h
+H or h: Help
+mkrec: creates a recipe, add to cook book.
+add {recipe}: adds a recipe to the collection.
+rm {recipe}: removes a recipe from the collection.
+rm -i {ingredient_name} {amount}: removes ingredient from shopping list.
+ls: list all recipes in shopping cart.
+ls -a: list all available recipes in cook book.
+ls -s: display shopping list.
+g or G: generates a shopping list.
+Q or q: Quit.
+Please enter a command: H
+H or h: Help
+mkrec: creates a recipe, add to cook book.
+add {recipe}: adds a recipe to the collection.
+rm {recipe}: removes a recipe from the collection.
+rm -i {ingredient_name} {amount}: removes ingredient from shopping list.
+ls: list all recipes in shopping cart.
+ls -a: list all available recipes in cook book.
+ls -s: display shopping list.
+g or G: generates a shopping list.
+Q or q: Quit.
+Please enter a command: ls
+No recipe in meal plan yet.
+Please enter a command: ls -a
+chocolate peanut butter banana shake
+chocolate brownies
+seitan
+cinnamon rolls
+peanut butter
+omelette
+Please enter a command: g
+Please enter a command: add peanut butter
+Please enter a command: ls
+[('peanut butter', '300 g peanuts,0.5 tsp salt,2 tsp oil')]
+Please enter a command: g
+| 300.0 | g | peanuts |
+| 0.5 | tsp | salt |
+| 2.0 | tsp | oil |
+Please enter a command: add cinnamon rolls
+Please enter a command: add peanut butter
+Please enter a command: ls
+[('peanut butter', '300 g peanuts,0.5 tsp salt,2 tsp oil'), ('cinnamon rolls', '480
+ml almond milk,115 g Nuttelex,50 g sugar,7 g active dry yeast,5.5 cup flour,1 tsp
+salt,170 g Nuttelex,165 g brown sugar,2 tbsp cinnamon,160 g powdered sugar,30 ml
+almond milk,0.5 tsp vanilla extract'), ('peanut butter', '300 g peanuts,0.5 tsp
+salt,2 tsp oil')]
+Please enter a command: g
+| 600.0 | g | peanuts |
+| 2.0 | tsp | salt |
+| 4.0 | tsp | oil |
+| 510.0 | ml | almond milk |
+| 285.0 | g | Nuttelex |
+| 50.0 | g | sugar |
+| 7.0 | g | active dry yeast |
+| 5.5 | cup | flour |
+| 165.0 | g | brown sugar |
+| 2.0 | tbsp | cinnamon |
+| 160.0 | g | powdered sugar |
+| 0.5 | tsp | vanilla extract |
+Please enter a command: ls -s
+| 600.0 | g | peanuts |
+| 2.0 | tsp | salt |
+| 4.0 | tsp | oil |
+| 510.0 | ml | almond milk |
+| 285.0 | g | Nuttelex |
+| 50.0 | g | sugar |
+| 7.0 | g | active dry yeast |
+| 5.5 | cup | flour |
+| 165.0 | g | brown sugar |
+| 2.0 | tbsp | cinnamon |
+| 160.0 | g | powdered sugar |
+| 0.5 | tsp | vanilla extract |
+Please enter a command: rm peanut butter
+Please enter a command: g
+| 510.0 | ml | almond milk |
+| 285.0 | g | Nuttelex |
+| 50.0 | g | sugar |
+| 7.0 | g | active dry yeast |
+| 5.5 | cup | flour |
+| 1.5 | tsp | salt |
+| 165.0 | g | brown sugar |
+| 2.0 | tbsp | cinnamon |
+| 160.0 | g | powdered sugar |
+| 0.5 | tsp | vanilla extract |
+| 300.0 | g | peanuts |
+| 2.0 | tsp | oil |
+Please enter a command: rm peanut butter
+Please enter a command: g
+| 510.0 | ml | almond milk |
+| 285.0 | g | Nuttelex |
+| 50.0 | g | sugar |
+| 7.0 | g | active dry yeast |
+| 5.5 | cup | flour |
+| 1.0 | tsp | salt |
+| 165.0 | g | brown sugar |
+| 2.0 | tbsp | cinnamon |
+| 160.0 | g | powdered sugar |
+| 0.5 | tsp | vanilla extract |
+Please enter a command: ls
+[('cinnamon rolls', '480 ml almond milk,115 g Nuttelex,50 g sugar,7 g active dry
+yeast,5.5 cup flour,1 tsp salt,170 g Nuttelex,165 g brown sugar,2 tbsp cinnamon,160
+g powdered sugar,30 ml almond milk,0.5 tsp vanilla extract')]
+Please enter a command: rm -i sugar 100
+Please enter a command: ls -s
+| 510.0 | ml | almond milk |
+| 285.0 | g | Nuttelex |
+| 7.0 | g | active dry yeast |
+| 5.5 | cup | flour |
+| 1.0 | tsp | salt |
+| 165.0 | g | brown sugar |
+| 2.0 | tbsp | cinnamon |
+| 160.0 | g | powdered sugar |
+| 0.5 | tsp | vanilla extract |
+Please enter a command: q
+Note that the ordering of the display does not matter.
+
+Example 2
+Please enter a command: add peanut butter
+Please enter a command: g
+| 300.0 | g | peanuts |
+| 0.5 | tsp | salt |
+| 2.0 | tsp | oil |
+Please enter a command: rm -i salt 1
+Please enter a command: ls -s
+| 300.0 | g | peanuts |
+| 2.0 | tsp | oil |
+Please enter a command: add 123123123PEANUT butter
+Please enter a command: ls
+[('peanut butter', '300 g peanuts,0.5 tsp salt,2 tsp oil'), ('peanut butter',
+'300 g peanuts,0.5 tsp salt,2 tsp oil')]
+Please enter a command: g
+| 600.0 | g | peanuts |
+| 1.0 | tsp | salt |
+| 4.0 | tsp | oil |
+Please enter a command: q
+
+Example 3
+Please enter a command: add coconut
+Recipe does not exist in the cook book.
+Use the mkrec command to create a new recipe.
+Please enter a command: rm coconut
+Please enter a command: mkrec
+Please enter the recipe name: coconut
+Please enter an ingredient: 1 large coconut
+Please enter an ingredient:
+Please enter a command: ls
+No recipe in meal plan yet.
+Please enter a command: ls -a
+chocolate peanut butter banana shake
+chocolate brownies
+seitan
+cinnamon rolls
+peanut butter
+omelette
+coconut
+Please enter a command: add coconut
+Please enter a command: ls
+[('coconut', '1 large coconut')]
+Please enter a command: g
+| 1.0 | large | coconut |
+Please enter a command:
