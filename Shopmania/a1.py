@@ -1,9 +1,3 @@
-"""
-CSSE1001 Assignment 1
-Semester 1, 2023
-"""
-
-# Fill these in with your details
 __author__ = "Pawan Parackal"
 __email__ = "s4792248@student.uq.edu.au"
 __date__ = "24/03/2023"
@@ -185,16 +179,20 @@ def remove_recipe(name: str, recipes: list[tuple[str, str]]) -> None:
 def get_ingredient_amount(ingredient: str, recipe: tuple[str, str]) -> tuple[float, str]:
     """
     Return the amount and measure of a specific ingredients.
-    If there is no ingredient present in the recipe it just return nothing
-
-    Parameter:
-    ingredient -> A string Value i.e. the ingredient nae to be find
-    recipe -> A tuple consisting of recipe name and its ingredient
-
-    >>recipe = ('peanut butter', '300 g peanuts,0.5 tsp salt,2 tsp oil')
-    >>get_ingredient_amount('peanuts', recipe)
+    If there is no ingredient present in the recipe it just returns nothing.
+    
+    Parameters:
+    ingredient -> A string Value i.e. the ingredient name to be found
+    recipe -> A tuple consisting of recipe name and its ingredients
+    
+    Returns:
+    A tuple containing the amount and measure of the ingredient found
+    
+    Example:
+    >>> recipe = ('peanut butter', '300 g peanuts,0.5 tsp salt,2 tsp oil')
+    >>> get_ingredient_amount('peanuts', recipe)
     (300.0, 'g')
-    >>get_ingredient_amount('soy beans', recipe)
+    >>> get_ingredient_amount('soy beans', recipe)
     """
     # Unpacking tuple to get amount and measure of ingredient
     ingredient_item = recipe[1]
@@ -387,15 +385,15 @@ def main() -> None:
         command = input("Please enter a command: ")
         if command.lower() == 'h':
             print("H or h: Help"
-                  "\nmkrec: creates a recipe, add to cook book."
-                  "\nadd {recipe}: adds a recipe to the collection."
-                  "\nrm {recipe}: removes a recipe from the collection."
-                  "\nrm -i {ingredient_name} {amount}: removes ingredient from shopping list."
-                  "\nls: list all recipes in shopping cart."
-                  "\nls -a: list all available recipes in cook book."
-                  "\nls -s: display shopping list."
-                  "\ng or G: generates a shopping list."
-                  "\nQ or q: Quit.")
+                  "\n    mkrec: creates a recipe, add to cook book."
+                  "\n    add {recipe}: adds a recipe to the collection."
+                  "\n    rm {recipe}: removes a recipe from the collection."
+                  "\n    rm -i {ingredient_name} {amount}: removes ingredient from shopping list."
+                  "\n    ls: list all recipes in shopping cart."
+                  "\n    ls -a: list all available recipes in cook book."
+                  "\n    ls -s: display shopping list."
+                  "\n    g or G: generates a shopping list."
+                  "\n    Q or q: Quit.")
         elif sanitise_command(command) == 'mkrec':
             add_recipe(create_recipe(), recipe_collection)
         elif command.startswith('add'):
@@ -431,7 +429,6 @@ def main() -> None:
                 display_ingredients(shopping_list)
         elif command.lower() == 'q':
             break
-
 
 if __name__ == "__main__":
     main()
