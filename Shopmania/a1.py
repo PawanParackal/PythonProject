@@ -1,9 +1,3 @@
-"""
-CSSE1001 Assignment 1
-Semester 1, 2023
-"""
-
-# Fill these in with your details
 __author__ = "Pawan Parackal"
 __email__ = "s4792248@student.uq.edu.au"
 __date__ = "24/03/2023"
