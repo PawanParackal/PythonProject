@@ -5,7 +5,7 @@ list based on what recipes are going to be prepared that week.
 
 
 3 Terminology
-In the context of this assignment:
+In the context of this Project:
 recipe name: str represents the name of a recipe. Note: Recipe names should only contain
 lowercase letters from the English alphabet without any numbers or special characters.
 recipe: tuple[str, str] is a tuple containing two str’s. The first str in the tuple represents the name of the recipe. The second str contains all the ingredients in the form
@@ -25,8 +25,8 @@ mentioned in this section, please see Section 5.
 4.1 Interaction loop
 At the beginning of the interaction, the user is prompted with the message
 Please enter a command:
-(note the trailing space) to choose a command. Once a command is entered the user should be
-prompted again. The valid commands are outlined in Table 1.
+to choose a command. Once a command is entered the user should be
+prompted again.
 Throughout the interaction, the user may add to or remove from the cookbook. They can also
 add to or remove from the list of recipes as well. You may assume that your program will
 not be tested for invalid inputs that do not match the expected commands in Table 1. The
@@ -46,8 +46,7 @@ recipes.
 "ls -a" list all available recipes.
 "ls -s" display shopping list.
 "mkrec" creates a recipe.
-Table 1: Potential command that user can choose. {recipe} denotes that the name of recipe
-should be provided. Values not surrounded by braces should be taken as string literals.
+Values not surrounded by braces should be taken as string literals.
 
 
 
